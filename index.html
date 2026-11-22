@@ -54,6 +54,22 @@
     html[data-theme="light"] [class~="border-white/15"] { border-color: #c0cab9 !important; }
     html[data-theme="light"] [class~="decoration-white/40"] { text-decoration-color: #697865 !important; }
     html[data-theme="light"] [class~="hover:text-[var(--accent)]"]:hover { color: var(--accent) !important; }
+    .process-card { background: #20241e; border: 1px solid #ffffff26; }
+    .process-number { background: var(--accent); color: #111310; }
+    html[data-theme="light"] .process-card { background: #fff; border-color: #c0cab9; }
+    html[data-theme="light"] .process-number { color: #fff; }
+    html[data-theme="light"] #gallery-viewer { background: #111310 !important; color: #f3f4ec !important; }
+    #gallery-viewer::backdrop { background: #080a08ed; }
+    @media (prefers-reduced-motion: no-preference) {
+      .motion-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1); }
+      .motion-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
+      .hero-art { animation: art-enter 850ms cubic-bezier(.2,.7,.2,1) both; }
+      .portfolio-art { transition: transform 350ms ease, border-color 350ms ease; }
+      .portfolio-art:hover { transform: translateY(-4px); border-color: var(--accent); }
+      .process-card { transition: transform 250ms ease, border-color 250ms ease; }
+      .motion-ready .process-card.reveal.is-visible:hover { transform: translateY(-3px); border-color: var(--accent); }
+      @keyframes art-enter { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
@@ -73,7 +89,7 @@
   <main id="main">
     <section id="top" aria-labelledby="hero-title" class="mx-auto max-w-7xl px-5 pb-20 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pb-28 lg:pt-20">
       <div class="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-        <div>
+        <div class="reveal">
           <p class="mb-6 inline-flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]"><span class="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true"></span> Vehicle Art / Custom illustration</p>
           <h1 id="hero-title" class="font-display max-w-xl text-[clamp(3.25rem,10vw,6.5rem)] font-semibold leading-[0.98] tracking-[-0.075em]">Custom Vector Art for Your <span class="text-[var(--accent)]">Vehicle</span></h1>
           <p class="mt-7 max-w-lg text-base leading-7 text-[#b8bdb1] sm:text-lg sm:leading-8">I turn photos of cars, motorcycles, trucks, and other vehicles into custom vector illustrations.</p>
@@ -84,7 +100,7 @@
           </div>
         </div>
 
-        <figure class="min-w-0">
+        <figure class="hero-art min-w-0">
           <div class="aspect-square overflow-hidden border border-[var(--accent)]/40 bg-[#20241e]">
             <img src="assets/img/1.jpg" alt="Vehicle Art portfolio image 1" width="1080" height="1080" fetchpriority="high" decoding="async" class="h-full w-full object-contain">
           </div>
@@ -95,7 +111,7 @@
 
     <section id="portfolio" aria-labelledby="portfolio-title" class="border-t border-white/10 bg-[#171a16] py-20 sm:py-24">
       <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div class="mb-9 flex flex-col justify-between gap-4 sm:mb-12 sm:flex-row sm:items-end">
+        <div class="reveal mb-9 flex flex-col justify-between gap-4 sm:mb-12 sm:flex-row sm:items-end">
           <div>
             <p class="mb-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">01 / Portfolio</p>
             <h2 id="portfolio-title" class="font-display text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">The work.</h2>
@@ -103,28 +119,28 @@
           <p class="max-w-sm text-sm leading-6 text-[#b8bdb1]">A closer look at the work.</p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <figure class="min-w-0">
-            <img src="assets/img/1.jpg" alt="Vehicle Art portfolio image 1" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain">
+          <figure class="reveal min-w-0">
+            <a href="assets/img/1.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 1 fullscreen"><img src="assets/img/1.jpg" alt="Vehicle Art portfolio image 1" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 01</figcaption>
           </figure>
-          <figure class="min-w-0">
-            <img src="assets/img/2.jpg" alt="Vehicle Art portfolio image 2" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain">
+          <figure class="reveal min-w-0">
+            <a href="assets/img/2.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 2 fullscreen"><img src="assets/img/2.jpg" alt="Vehicle Art portfolio image 2" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 02</figcaption>
           </figure>
-          <figure class="min-w-0 sm:col-span-2 lg:col-span-1">
-            <img src="assets/img/3.jpg" alt="Vehicle Art portfolio image 3" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain sm:aspect-[2/1] lg:aspect-square">
+          <figure class="reveal min-w-0 sm:col-span-2 lg:col-span-1">
+            <a href="assets/img/3.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 3 fullscreen"><img src="assets/img/3.jpg" alt="Vehicle Art portfolio image 3" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain sm:aspect-[2/1] lg:aspect-square"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 03</figcaption>
           </figure>
-          <figure class="min-w-0">
-            <img src="assets/img/4.jpg" alt="Vehicle Art portfolio image 4" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain">
+          <figure class="reveal min-w-0">
+            <a href="assets/img/4.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 4 fullscreen"><img src="assets/img/4.jpg" alt="Vehicle Art portfolio image 4" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 04</figcaption>
           </figure>
-          <figure class="min-w-0">
-            <img src="assets/img/5.jpg" alt="Vehicle Art portfolio image 5" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain">
+          <figure class="reveal min-w-0">
+            <a href="assets/img/5.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 5 fullscreen"><img src="assets/img/5.jpg" alt="Vehicle Art portfolio image 5" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 05</figcaption>
           </figure>
-          <figure class="min-w-0">
-            <img src="assets/img/6.jpg" alt="Vehicle Art portfolio image 6" width="1080" height="1080" loading="lazy" decoding="async" class="aspect-square w-full border border-white/15 bg-[#222620] object-contain">
+          <figure class="reveal min-w-0">
+            <a href="assets/img/6.jpg" class="gallery-link block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Open portfolio image 6 fullscreen"><img src="assets/img/6.jpg" alt="Vehicle Art portfolio image 6" width="1080" height="1080" loading="lazy" decoding="async" class="portfolio-art aspect-square w-full border border-white/15 bg-[#222620] object-contain"></a>
             <figcaption class="mt-3 font-display text-xs uppercase tracking-[0.15em] text-[#a8b09c]">Selected work / 06</figcaption>
           </figure>
         </div>
@@ -132,7 +148,7 @@
     </section>
 
     <section aria-labelledby="get-title" class="border-t border-white/10 py-20 sm:py-24">
-      <div class="mx-auto grid max-w-7xl gap-7 px-5 sm:px-8 lg:grid-cols-[0.35fr_0.65fr] lg:gap-14 lg:px-12">
+      <div class="reveal mx-auto grid max-w-7xl gap-7 px-5 sm:px-8 lg:grid-cols-[0.35fr_0.65fr] lg:gap-14 lg:px-12">
         <div>
           <p class="mb-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">02 / Deliverables</p>
           <h2 id="get-title" class="font-display text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">What you get.</h2>
@@ -145,13 +161,30 @@
 
     <section aria-labelledby="order-title" class="border-t border-white/10 bg-[#171a16] py-20 sm:py-24">
       <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <p class="mb-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">03 / The process</p>
-        <h2 id="order-title" class="font-display mb-10 text-4xl font-semibold tracking-[-0.06em] sm:mb-12 sm:text-5xl">How to order.</h2>
-        <ol class="grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">01</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Message me on Instagram to discuss your illustration.</p></li>
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">02</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Email your vehicle photos and references to <a href="mailto:idrisefendi171@gmail.com" class="break-all text-[var(--accent)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">idrisefendi171@gmail.com</a>.</p></li>
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">03</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Pay via PayPal or BCA. I’ll share the payment details in DM.</p></li>
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">04</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Receive your finished artwork in CDR, JPG, PNG, and PDF.</p></li>
+        <p class="reveal mb-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">03 / The process</p>
+        <h2 id="order-title" class="font-display mb-4 text-4xl font-semibold tracking-[-0.06em] sm:text-5xl">How to order.</h2>
+        <p class="mb-9 max-w-lg text-base leading-7 text-[#b8bdb1] sm:mb-12">Four simple steps from your vehicle photos to finished artwork.</p>
+        <ol class="grid gap-4 md:grid-cols-2 md:gap-5">
+          <li class="process-card reveal p-6 sm:p-8">
+            <div class="flex items-center gap-4"><span class="process-number flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold">01</span><span class="h-px flex-1 bg-[var(--accent)] opacity-40" aria-hidden="true"></span><span class="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Connect</span></div>
+            <h3 class="font-display mt-8 text-2xl font-semibold tracking-[-0.05em] text-[#f3f4ec]">Start a conversation</h3>
+            <p class="mt-3 text-base leading-7 text-[#b8bdb1]">Message me on Instagram to discuss your illustration.</p>
+          </li>
+          <li class="process-card reveal p-6 sm:p-8">
+            <div class="flex items-center gap-4"><span class="process-number flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold">02</span><span class="h-px flex-1 bg-[var(--accent)] opacity-40" aria-hidden="true"></span><span class="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Share</span></div>
+            <h3 class="font-display mt-8 text-2xl font-semibold tracking-[-0.05em] text-[#f3f4ec]">Send your photos</h3>
+            <p class="mt-3 text-base leading-7 text-[#b8bdb1]">Email your vehicle photos and references to <a href="mailto:idrisefendi171@gmail.com" class="break-all text-[var(--accent)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">idrisefendi171@gmail.com</a>.</p>
+          </li>
+          <li class="process-card reveal p-6 sm:p-8">
+            <div class="flex items-center gap-4"><span class="process-number flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold">03</span><span class="h-px flex-1 bg-[var(--accent)] opacity-40" aria-hidden="true"></span><span class="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Pay</span></div>
+            <h3 class="font-display mt-8 text-2xl font-semibold tracking-[-0.05em] text-[#f3f4ec]">Choose your payment</h3>
+            <p class="mt-3 text-base leading-7 text-[#b8bdb1]">Pay via PayPal or BCA. I’ll share the payment details in DM.</p>
+          </li>
+          <li class="process-card reveal p-6 sm:p-8">
+            <div class="flex items-center gap-4"><span class="process-number flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-sm font-bold">04</span><span class="h-px flex-1 bg-[var(--accent)] opacity-40" aria-hidden="true"></span><span class="font-display text-xs font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">Receive</span></div>
+            <h3 class="font-display mt-8 text-2xl font-semibold tracking-[-0.05em] text-[#f3f4ec]">Get your artwork</h3>
+            <p class="mt-3 text-base leading-7 text-[#b8bdb1]">Receive your finished artwork in CDR, JPG, PNG, and PDF.</p>
+          </li>
         </ol>
         <div class="mt-12 sm:mt-16">
           <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -187,6 +220,22 @@
     </section>
   </main>
 
+  <dialog id="gallery-viewer" aria-label="Portfolio image viewer" class="fixed inset-0 m-auto h-[100dvh] max-h-none w-full max-w-none bg-[#111310] p-0 text-[#f3f4ec] sm:h-[min(94dvh,900px)] sm:max-w-5xl sm:border sm:border-white/20">
+    <div class="flex h-full flex-col px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
+      <div class="flex items-center justify-between gap-4">
+        <p id="gallery-counter" class="font-display text-sm font-semibold tracking-[0.18em]" aria-live="polite">01 / 06</p>
+        <button id="gallery-close" type="button" class="min-h-12 border border-white/30 px-5 font-display text-sm font-semibold transition-colors hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Close gallery">Close <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="flex min-h-0 flex-1 items-center justify-center py-4">
+        <img id="gallery-image" src="assets/img/1.jpg" alt="Vehicle Art portfolio image 1" width="1080" height="1080" class="max-h-full max-w-full object-contain">
+      </div>
+      <div class="flex items-center justify-between gap-4">
+        <button id="gallery-prev" type="button" class="min-h-12 min-w-28 border border-white/30 px-4 font-display text-sm font-semibold transition-colors hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Previous image">← Previous</button>
+        <button id="gallery-next" type="button" class="min-h-12 min-w-28 border border-white/30 px-4 font-display text-sm font-semibold transition-colors hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]" aria-label="Next image">Next →</button>
+      </div>
+    </div>
+  </dialog>
+
   <footer class="border-t border-white/10 px-5 py-6 sm:px-8 lg:px-12">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 font-display text-xs text-[#92998c]"><span>Vehicle Art</span><span>Custom vector illustrations of your vehicle.</span></div>
   </footer>
@@ -215,6 +264,62 @@
       } catch {}
       applyTheme(event.matches ? 'light' : 'dark');
     });
+
+    if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const sections = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px 60px 0px' });
+      document.documentElement.classList.add('motion-ready');
+      sections.forEach(section => revealObserver.observe(section));
+    }
+
+    const gallery = document.getElementById('gallery-viewer');
+    const galleryLinks = [...document.querySelectorAll('.gallery-link')];
+    const galleryImage = document.getElementById('gallery-image');
+    const galleryCounter = document.getElementById('gallery-counter');
+    let galleryIndex = 0;
+    let galleryTrigger;
+
+    function showGalleryImage(index) {
+      galleryIndex = (index + galleryLinks.length) % galleryLinks.length;
+      galleryImage.src = galleryLinks[galleryIndex].href;
+      galleryImage.alt = galleryLinks[galleryIndex].querySelector('img').alt;
+      galleryCounter.textContent = `${String(galleryIndex + 1).padStart(2, '0')} / ${String(galleryLinks.length).padStart(2, '0')}`;
+    }
+
+    if (typeof gallery.showModal === 'function') {
+      galleryLinks.forEach((link, index) => link.addEventListener('click', event => {
+        event.preventDefault();
+        galleryTrigger = link;
+        showGalleryImage(index);
+        gallery.showModal();
+        document.getElementById('gallery-close').focus();
+      }));
+      document.getElementById('gallery-close').addEventListener('click', () => gallery.close());
+      document.getElementById('gallery-prev').addEventListener('click', () => showGalleryImage(galleryIndex - 1));
+      document.getElementById('gallery-next').addEventListener('click', () => showGalleryImage(galleryIndex + 1));
+      gallery.addEventListener('close', () => galleryTrigger?.focus());
+      gallery.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          showGalleryImage(galleryIndex + (event.key === 'ArrowRight' ? 1 : -1));
+        }
+      });
+      gallery.addEventListener('click', event => {
+        if (event.target === gallery) gallery.close();
+      });
+      let touchStartX = 0;
+      galleryImage.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+      galleryImage.addEventListener('touchend', event => {
+        const distance = event.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(distance) > 50) showGalleryImage(galleryIndex + (distance < 0 ? 1 : -1));
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
