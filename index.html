@@ -4,8 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111310">
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('vehicle-art-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    } catch {
+      document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+  </script>
   <meta name="description" content="Custom vector illustrations of cars, motorcycles, trucks, and other vehicles from your photos. Message Vehicle Art on Instagram.">
   <title>Vehicle Art | Custom Vector Art for Your Vehicle</title>
+  <link rel="canonical" href="https://idrisefendi.github.io/vehicle-art/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vehicle Art">
+  <meta property="og:url" content="https://idrisefendi.github.io/vehicle-art/">
+  <meta property="og:title" content="Custom Vector Art for Your Vehicle | Vehicle Art">
+  <meta property="og:description" content="Custom illustrations of cars, motorcycles, trucks, and more from your photos. $20 USD. Message @vehicle.art on Instagram to order.">
+  <meta property="og:image" content="https://idrisefendi.github.io/vehicle-art/assets/img/1.jpg">
+  <meta property="og:image:alt" content="Featured Vehicle Art portfolio image">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Custom Vector Art for Your Vehicle | Vehicle Art">
+  <meta name="twitter:description" content="Custom vehicle illustrations from your photos. $20 USD. Message @vehicle.art on Instagram to order.">
+  <meta name="twitter:image" content="https://idrisefendi.github.io/vehicle-art/assets/img/1.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +36,24 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; }
     .font-display { font-family: 'Space Grotesk', sans-serif; }
+    html[data-theme="light"] { --accent: #476600; color-scheme: light; }
+    html[data-theme="dark"] { color-scheme: dark; }
+    html[data-theme="light"] [class~="bg-[#111310]"] { background-color: #f8f9f4 !important; }
+    html[data-theme="light"] [class~="bg-[#171a16]"] { background-color: #eef1e9 !important; }
+    html[data-theme="light"] [class~="bg-[#20241e]"],
+    html[data-theme="light"] [class~="bg-[#222620]"] { background-color: #fff !important; }
+    html[data-theme="light"] [class~="bg-white/10"] { background-color: #cbd3c4 !important; }
+    html[data-theme="light"] [class~="text-[#f3f4ec]"] { color: #192119 !important; }
+    html[data-theme="light"] [class~="text-[#e8eadf]"] { color: #293229 !important; }
+    html[data-theme="light"] [class~="text-[#b8bdb1]"],
+    html[data-theme="light"] [class~="text-[#c4c8bc]"] { color: #455345 !important; }
+    html[data-theme="light"] [class~="text-[#a8b09c]"],
+    html[data-theme="light"] [class~="text-[#92998c]"] { color: #50604e !important; }
+    html[data-theme="light"] [class~="text-[#111310]"] { color: #fff !important; }
+    html[data-theme="light"] [class~="border-white/10"] { border-color: #cbd3c4 !important; }
+    html[data-theme="light"] [class~="border-white/15"] { border-color: #c0cab9 !important; }
+    html[data-theme="light"] [class~="decoration-white/40"] { text-decoration-color: #697865 !important; }
+    html[data-theme="light"] [class~="hover:text-[var(--accent)]"]:hover { color: var(--accent) !important; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
@@ -24,7 +63,10 @@
   <header class="border-b border-white/10">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
       <a href="#top" class="flex items-center gap-3 font-display text-lg font-bold tracking-[-0.06em] text-[#f3f4ec] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:text-xl" aria-label="Vehicle Art, back to top"><img src="assets/img/logo.jpg" alt="" width="1080" height="1080" class="h-10 w-10 object-contain sm:h-11 sm:w-11">VEHICLE <span class="text-[var(--accent)]">ART</span></a>
-      <a href="#portfolio" class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-[#c4c8bc] transition-colors hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">View work <span aria-hidden="true">↗</span></a>
+      <nav class="flex items-center gap-2 sm:gap-5" aria-label="Page navigation">
+        <a href="#portfolio" class="font-display text-xs font-semibold uppercase tracking-[0.12em] text-[#c4c8bc] transition-colors hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:tracking-[0.18em]">Work <span aria-hidden="true">↗</span></a>
+        <button id="theme-toggle" type="button" class="min-h-11 min-w-16 border border-white/15 px-2 font-display text-xs font-semibold text-[#f3f4ec] transition-colors hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:min-w-24 sm:px-3" aria-label="Switch color theme"><span id="theme-label">Light</span></button>
+      </nav>
     </div>
   </header>
 
@@ -35,6 +77,7 @@
           <p class="mb-6 inline-flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]"><span class="h-2 w-2 rounded-full bg-[var(--accent)]" aria-hidden="true"></span> Vehicle Art / Custom illustration</p>
           <h1 id="hero-title" class="font-display max-w-xl text-[clamp(3.25rem,10vw,6.5rem)] font-semibold leading-[0.98] tracking-[-0.075em]">Custom Vector Art for Your <span class="text-[var(--accent)]">Vehicle</span></h1>
           <p class="mt-7 max-w-lg text-base leading-7 text-[#b8bdb1] sm:text-lg sm:leading-8">I turn photos of cars, motorcycles, trucks, and other vehicles into custom vector illustrations.</p>
+          <p class="mt-5 text-sm leading-6 text-[#b8bdb1]">My name is Idris Efendi. <span class="text-[#f3f4ec]">Automotive art design 🚗 ™</span></p>
           <div class="mt-9 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
             <a href="https://ig.me/m/vehicle.art" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-14 items-center justify-center gap-3 bg-[var(--accent)] px-6 font-display text-sm font-bold text-[#111310] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">Message Me on Instagram <span aria-hidden="true">↗</span></a>
             <p class="font-display text-xl font-semibold tracking-[-0.04em] text-[#f3f4ec]">$20 USD</p>
@@ -42,10 +85,10 @@
         </div>
 
         <figure class="min-w-0">
-          <div class="aspect-square overflow-hidden border border-white/15 bg-[#20241e]">
+          <div class="aspect-square overflow-hidden border border-[var(--accent)]/40 bg-[#20241e]">
             <img src="assets/img/1.jpg" alt="Vehicle Art portfolio image 1" width="1080" height="1080" fetchpriority="high" decoding="async" class="h-full w-full object-contain">
           </div>
-          <figcaption class="mt-3 font-display text-[10px] font-semibold uppercase tracking-[0.17em] text-[#92998c]">Featured work / 01</figcaption>
+          <figcaption class="mt-3 flex items-center justify-between gap-4 font-display text-[10px] font-semibold uppercase tracking-[0.17em] text-[#92998c]"><span>Featured work / 01</span><span>Vehicle Art</span></figcaption>
         </figure>
       </div>
     </section>
@@ -106,10 +149,26 @@
         <h2 id="order-title" class="font-display mb-10 text-4xl font-semibold tracking-[-0.06em] sm:mb-12 sm:text-5xl">How to order.</h2>
         <ol class="grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">01</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Message me on Instagram to discuss your illustration.</p></li>
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">02</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Email your vehicle photos and references. I’ll share my email address in DM.</p></li>
-          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">03</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Pay via PayPal. I’ll share the payment details in DM.</p></li>
+          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">02</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Email your vehicle photos and references to <a href="mailto:idrisefendi171@gmail.com" class="break-all text-[var(--accent)] underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">idrisefendi171@gmail.com</a>.</p></li>
+          <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">03</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Pay via PayPal or BCA. I’ll share the payment details in DM.</p></li>
           <li class="min-h-52 bg-[#171a16] p-6 sm:p-7"><span class="font-display text-sm font-semibold text-[var(--accent)]">04</span><p class="mt-8 text-base leading-7 text-[#e8eadf]">Receive your finished artwork in CDR, JPG, PNG, and PDF.</p></li>
         </ol>
+        <div class="mt-12 sm:mt-16">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h3 class="font-display text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">Payment options</h3>
+            <p class="text-sm text-[#b8bdb1]">Payment details are shared in Instagram DM.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="flex flex-col justify-between border border-white/15 bg-[#20241e] p-6 sm:min-h-48 sm:p-8">
+              <div><p class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Payment method / 01</p><h4 class="font-display mt-5 text-3xl font-semibold tracking-[-0.05em]">PayPal</h4></div>
+              <p class="mt-6 text-sm leading-6 text-[#b8bdb1]">Ask for PayPal payment details in DM.</p>
+            </article>
+            <article class="flex flex-col justify-between border border-white/15 bg-[#20241e] p-6 sm:min-h-48 sm:p-8">
+              <div><p class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">Payment method / 02</p><h4 class="font-display mt-5 text-3xl font-semibold tracking-[-0.05em]">BCA</h4></div>
+              <p class="mt-6 text-sm leading-6 text-[#b8bdb1]">Ask for BCA payment details in DM.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -121,6 +180,9 @@
           <a href="https://ig.me/m/vehicle.art" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-14 w-full items-center justify-center gap-3 bg-[var(--accent)] px-6 font-display text-sm font-bold text-[#111310] transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)] sm:w-auto">Message Me on Instagram <span aria-hidden="true">↗</span></a>
           <a href="https://www.instagram.com/vehicle.art/" target="_blank" rel="noopener noreferrer" class="font-display text-sm font-semibold underline decoration-white/40 underline-offset-4 transition-colors hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">View @vehicle.art on Instagram <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="mt-12 border-t border-white/10 pt-7 text-sm">
+          <div><p class="font-display text-xs font-semibold uppercase tracking-[0.17em] text-[#92998c]">Email</p><a href="mailto:idrisefendi171@gmail.com" class="mt-2 inline-block break-all text-[#f3f4ec] underline decoration-white/40 underline-offset-4 hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]">idrisefendi171@gmail.com</a></div>
+        </div>
       </div>
     </section>
   </main>
@@ -128,5 +190,31 @@
   <footer class="border-t border-white/10 px-5 py-6 sm:px-8 lg:px-12">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 font-display text-xs text-[#92998c]"><span>Vehicle Art</span><span>Custom vector illustrations of your vehicle.</span></div>
   </footer>
+  <script>
+    const themeButton = document.getElementById('theme-toggle');
+    const themeLabel = document.getElementById('theme-label');
+    const systemTheme = matchMedia('(prefers-color-scheme: light)');
+
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      const next = theme === 'dark' ? 'Light' : 'Dark';
+      themeLabel.textContent = next;
+      themeButton.setAttribute('aria-label', `Switch to ${next.toLowerCase()} mode`);
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111310' : '#f8f9f4';
+    }
+
+    applyTheme(document.documentElement.dataset.theme);
+    themeButton.addEventListener('click', () => {
+      const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(theme);
+      try { localStorage.setItem('vehicle-art-theme', theme); } catch {}
+    });
+    systemTheme.addEventListener('change', event => {
+      try {
+        if (localStorage.getItem('vehicle-art-theme')) return;
+      } catch {}
+      applyTheme(event.matches ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
